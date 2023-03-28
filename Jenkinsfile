@@ -28,9 +28,6 @@ pipeline{
                 }
             }
         }*/
-        stage('Clone Code'){
-            checkout scm
-        }
         stage('Build Image') {
             steps {
                 script {
