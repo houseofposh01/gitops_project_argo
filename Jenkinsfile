@@ -19,19 +19,30 @@ pipeline{
             }
         }
 
-        /*stage('Checkout SCM') {
+        stage('Checkout SCM') {
             steps {
                 script {
                     git credentialsId: 'gitmaster',
-                    url: 'https://github.com/houseofposh01/gitops_project_argo.git',
+                    url: 'https://github.com/houseofposh01/-gitops_argocd_project',
                     branch: 'main'
                 }
             }
-        }*/
+        }
         stage('Build Image') {
             steps {
                 script {
                     docker_image = docker.build "${IMAGE_NAME}"
+                }
+            }
+        }
+        stage('Push Image') {
+            steps {
+                script {
+                    /* groovylint-disable-next-line NestedBlockDepth */
+                    docker.withRegistry('',REGISTRY_CREDS) {
+                        docker_image.push("$BUILD_NUMBER")
+                        docker_image.push('latest')
+                    }
                 }
             }
         }
