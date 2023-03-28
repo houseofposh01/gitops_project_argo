@@ -67,5 +67,21 @@ pipeline{
                 }
             }
         }
+        stage('Git Push'){
+            steps{
+                script{
+                    sh """
+                        git config --global --user.name "Mr Devops"
+                        git config --global --user.email "MrDevops@MrDevops.com"
+                        git add deployment.yaml
+                        git commit -m "Updated commit for build ${BUILD_NUMBER}"
+                        """
+                        /* groovylint-disable-next-line DuplicateStringLiteral, NestedBlockDepth */
+                        withCredentials([gitUsernamePassword(credentialsId: 'gitmaster', gitToolName: 'Default')]) {
+                            sh 'git push https://github.com/houseofposh01/-gitops_argocd_project main '
+                        }
+                }
+            }
+        }
     }
 }
