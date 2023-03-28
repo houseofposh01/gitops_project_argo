@@ -54,5 +54,14 @@ pipeline{
                 }
             }
         }
+        stage('Deployment File'){
+            steps{
+                script{
+                    sh "cat deployment.yaml"
+                    sh "sed -i 's/${APP_NAME}.*/${APP_NAME}${IMAGE_TAG}/g" deployment.yaml
+                    sh "cat deployment.yaml"
+                }
+            }
+        }
     }
 }
