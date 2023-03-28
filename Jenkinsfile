@@ -60,7 +60,7 @@ pipeline{
 
                     sh """
                     cat deployment.yaml
-                    sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yaml
+                    sed -i 's+aaggroup/${APP_NAME}.*+aaggroup/${APP_NAME}:${IMAGE_TAG}+g' deployment.yaml
                     /* groovylint-disable-next-line DuplicateStringLiteral */
                     cat deployment.yaml
                     """
