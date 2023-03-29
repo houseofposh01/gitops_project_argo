@@ -1,16 +1,16 @@
 {
     "jenkins-runner.jobs": {
-        "GITOPS_ARGOCD_CICD": {
+        "gitops-argocd_CI": {
             "isDefault": true,
             "runWith": "jenkins-master",
-            "name": "GITOPS_ARGOCD_CICD",
+            "name": "gitops-argocd_CI",
             
         }
     },
 
     "jenkins-runner.hostConfigs": {
         "jenkins-master": {
-            "url": "http://3.15.211.53:8080/",
+            "url": "http://3.133.136.135:8080/",
             "user": "admin",
             "password": "admin",
             "useCrumbIssuer": true,
