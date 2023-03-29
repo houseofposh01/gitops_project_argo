@@ -16,7 +16,7 @@ spec:
         app: flask-app
     spec:
       containers:
-      - image: aaggroup/gitops-argo-app:latest
+      - image: aaggroup/gitops-argo-app:v1
         name: flask-app-container
         resources:
             limits:
